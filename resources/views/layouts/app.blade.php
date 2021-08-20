@@ -10,10 +10,27 @@
           crossorigin="anonymous"/>
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <style type="text/css">
+    .paginacion svg{
+        width: 40px;
+    }
+    .paginacion p{
+        display: block;
+        margin-top: 10px;
+    }
+    .error{
+        color: red;
+    }
 
+
+</style>
     @yield('third_party_stylesheets')
 
     @stack('page_css')
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css">
+
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -30,14 +47,14 @@
         <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown user-menu">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                    <img src="https://infyom.com/images/logo/blue_logo_150x150.jpg"
+                    <img src="{{asset('img/logo.png')}}"
                          class="user-image img-circle elevation-2" alt="User Image">
                     <span class="d-none d-md-inline">{{ Auth::user()->name }}</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                     <!-- User image -->
                     <li class="user-header bg-primary">
-                        <img src="https://infyom.com/images/logo/blue_logo_150x150.jpg"
+                        <img src="{{asset('img/logo.png')}}"
                              class="img-circle elevation-2"
                              alt="User Image">
                         <p>
