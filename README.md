@@ -84,7 +84,7 @@ DB_USERNAME=xxxxx
 DB_PASSWORD=xxxxx
 ~~~
 
-6) Insertar los archivos de prueba corriendo el sql en la ruta doc/usuarios_ejemplo.sql
+6) Insertar los archivos de prueba corriendo el sql en la ruta [link](/doc/usuarios_ejemplo.sql)     # usuarios ejemplo sql
 
 7) Acceder /login e ingresar con el usuario: admin@test.com clave:123456
 
