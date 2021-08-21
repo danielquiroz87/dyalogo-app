@@ -62,3 +62,20 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Instrucciones de Instalacion
+
+1) composer install
+
+2) Instalar Adminlte via composer: composer require jeroennoten/laravel-adminlte
+
+3) php artisan adminlte:install
+
+4) Correr el proyecto con php artisan serve
+
+5) Revisar la configuración del archivo .env conectar la base de datos 
+
+6) Insertar los archivos de prueba corriendo el sql en la ruta doc/usuarios_ejemplo.sql
+
+7) Acceder /login e ingresar con el usuario: admin@test.com clave:123456
+
