@@ -8,8 +8,9 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Usuarios</li>
+              <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{route('users')}}">Usuarios</a></li>
+              <li class="breadcrumb-item active">Editar Usuario</li>
             </ol>
           </div>
         </div>
@@ -77,7 +78,7 @@
                 <div class="form-group">
                     <strong>Email:</strong>
                     <input type="email" name="email" class="form-control" placeholder="example@email.com"
-                        value="{{$user->correo}}" maxlength="255" required>
+                        value="{{$user->email}}" maxlength="255" required autocomplete="off">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -91,13 +92,19 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
+                  @if( Auth::user()->cargo=='administrador' )
                     <strong>Cargo:</strong>
-                    <select name="cargo" id="select-cargo" class="form-control" required>
+                    <select name="cargo" id="select-cargo" class="form-control" required  >
                       <option value="">Seleccione un cargo</option>
                       <option value="administrador" @if ($user->cargo=='administrador') selected='selected' @endif >Administrador</option>
                       <option value="supervisor" @if ($user->cargo=='supervisor') selected='selected' @endif>Supervisor</option>
                       <option value="agente" @if ($user->cargo=='agente') selected='selected' @endif>Agente</option>
                     </select>
+                    @else
+                      <strong>Cargo:</strong>
+                      <p>{{Auth::user()->cargo}}</p>
+                      <input type="hidden" name="cargo" value="{{Auth::user()->cargo}}">
+                    @endif
                 </div>
             </div>
 

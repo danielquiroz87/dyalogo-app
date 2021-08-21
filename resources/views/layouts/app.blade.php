@@ -60,7 +60,7 @@
                 <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                     <!-- User image -->
                     <li class="user-header bg-primary">
-                        <img src="{{asset('img/logo.png')}}"
+                        <img src="{{asset(Auth::user()->foto)}}"
                              class="img-circle elevation-2"
                              alt="User Image">
                         <p>
@@ -70,7 +70,7 @@
                     </li>
                     <!-- Menu Footer-->
                     <li class="user-footer">
-                        <a href="{{route('user.edit', Auth::user()->id)}}" class="btn btn-default btn-flat">Perfil</a>
+                        <a href="{{route('user.profile')}}" class="btn btn-default btn-flat">Perfil</a>
                         <a href="#" class="btn btn-default btn-flat float-right"
                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             Cerrar Sesión

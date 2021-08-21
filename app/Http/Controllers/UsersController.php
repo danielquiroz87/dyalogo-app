@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Usuari;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
-
+use Auth;
 
 class UsersController extends Controller
 {
@@ -50,7 +50,17 @@ class UsersController extends Controller
              return view('404');
         }
     }
-
+    public function profile()
+    { 
+        //Ejemplo pagina 404
+        $user=Auth::user();
+        if($user){
+            return view('users.edit')->with(['user'=>$user]);
+        }
+        else{
+             return view('404');
+        }
+    }
     public function delete($id){
 
         $user=Usuari::find($id);

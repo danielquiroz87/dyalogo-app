@@ -22,14 +22,19 @@ Route::post('/autenticar', [App\Http\Controllers\Auth\LoginController::class, 'a
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/users', [App\Http\Controllers\UsersController::class, 'index'])->name('users');
-Route::get('/user/new', [App\Http\Controllers\UsersController::class, 'new'])->name('user.new');
-Route::get('/user/edit/{id}', [App\Http\Controllers\UsersController::class, 'edit'])->name('user.edit');
+//Protegemos las rutas de admin con un midleware
+Route::group(['middleware' => ['auth', 'admin']], function() {
+	Route::get('/users', [App\Http\Controllers\UsersController::class, 'index'])->name('users');
+	Route::get('/user/new', [App\Http\Controllers\UsersController::class, 'new'])->name('user.new');
+	Route::get('/user/edit/{id}', [App\Http\Controllers\UsersController::class, 'edit'])->name('user.edit');
 
 Route::post('/user/delete/{id}', [App\Http\Controllers\UsersController::class, 'delete'])->name('user.delete');
 
+
+});
+
+Route::get('/profile', [App\Http\Controllers\UsersController::class, 'profile'])->name('user.profile');
+
 Route::post('/user/save', [App\Http\Controllers\UsersController::class, 'save'])->name('user.save');
-
-
 
 Auth::routes();
