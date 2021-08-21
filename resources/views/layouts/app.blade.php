@@ -21,7 +21,13 @@
     .error{
         color: red;
     }
-
+    .horario label{
+        display: block;
+        min-width: 100px;
+    }
+    #section-horario{
+        display: none;
+    }
 
 </style>
     @yield('third_party_stylesheets')
@@ -99,7 +105,14 @@
 </div>
 
 <script src="{{ mix('js/app.js') }}" defer></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.4/sweetalert2.min.css
+
+
+
+">
 @yield('third_party_scripts')
 
 @stack('page_scripts')

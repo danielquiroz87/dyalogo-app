@@ -10,7 +10,10 @@ class Usuari extends Model
     use HasFactory;
 
     //Sobrescribimos los valores de las columnas por unas mas bonitas
-
+    public function getIdAttribute(){
+    	
+    	return $this->attributes['USUARI_ConsInte__b'];
+    }
     public function getNombreAttribute(){
     	
     	return $this->attributes['USUARI_Nombre____b'];
@@ -66,9 +69,9 @@ class Usuari extends Model
     	return $this->attributes['USUARI_HorIniMie_b'];
     }
 
-    public function getMiercolesHoraFinallAttribute(){
+    public function getMiercolesHoraFinalAttribute(){
     	
-    	return $this->attributes['USUARI_HorIniLun_b'];
+    	return $this->attributes['USUARI_HorFinMie_b'];
     }
 
     public function getJuevesHoraInicialAttribute(){
@@ -106,7 +109,7 @@ class Usuari extends Model
     	return $this->attributes['USUARI_HorIniDom_b'];
     }
 
-    public function getDomingoHoraFinallAttribute(){
+    public function getDomingoHoraFinalAttribute(){
     	
     	return $this->attributes['USUARI_HorFinDom_b'];
     }
@@ -176,9 +179,9 @@ class Usuari extends Model
          $this->attributes['USUARI_HorIniMie_b']=$value;
     }
 
-    public function setMiercolesHoraFinallAttribute($value){
+    public function setMiercolesHoraFinalAttribute($value){
         
-         $this->attributes['USUARI_HorIniLun_b']=$value;
+         $this->attributes['USUARI_HorFinMie_b']=$value;
     }
 
     public function setJuevesHoraInicialAttribute($value){
@@ -216,7 +219,7 @@ class Usuari extends Model
          $this->attributes['USUARI_HorIniDom_b']=$value;
     }
 
-    public function setDomingoHoraFinallAttribute($value){
+    public function setDomingoHoraFinalAttribute($value){
         
          $this->attributes['USUARI_HorFinDom_b']=$value;
     }
@@ -262,6 +265,7 @@ class Usuari extends Model
 
 
     protected $maps = [
+      'id'=>'USUARI_ConsInte__b',	
 	  'nombre'=>'USUARI_Nombre____b',
 	  'cargo'=>'USUARI_Cargo_____b',
 	  'identificacion'=>'USUARI_Identific_b',
@@ -286,10 +290,11 @@ class Usuari extends Model
 		'festivo_hora_final'=>'USUARI_HorFinFes_b'
 	];
 
-	protected $appends = ['nombre', 'cargo','identificacion','foto','correo','password','lunes_hora_inicial','lunes_hora_final','martes_hora_inicial','martes_hora_final','miercoles_hora_inicial','miercoles_hora_final','jueves_hora_inicial','jueves_hora_final','viernes_hora_inicial','viernes_hora_final','sabado_hora_inicial','sabado_hora_final','domingo_hora_inicial','domingo_hora_final','festivo_hora_inicial'=>'festivo_hora_final'
+	protected $appends = ['id','nombre', 'cargo','identificacion','foto','correo','password','lunes_hora_inicial','lunes_hora_final','martes_hora_inicial','martes_hora_final','miercoles_hora_inicial','miercoles_hora_final','jueves_hora_inicial','jueves_hora_final','viernes_hora_inicial','viernes_hora_final','sabado_hora_inicial','sabado_hora_final','domingo_hora_inicial','domingo_hora_final','festivo_hora_inicial'=>'festivo_hora_final'
 	];
 
 	protected $hidden = [
+		'USUARI_ConsInte__b',
         'USUARI_Nombre____b',
         'USUARI_Correo___b',
         'USUARI_Cargo_____b',
