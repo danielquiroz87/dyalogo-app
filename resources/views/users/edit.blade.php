@@ -82,8 +82,10 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Password:</strong>
-                    <input type="password" name="password" class="form-control" value="{{$user->password}}" placeholder=""
+                    <strong>Password</strong>
+                    <a href="#" id="cambiar-password"> / Cambiar</a>
+                    
+                    <input id="password" type="password" name="password" class="form-control" value="" placeholder=""
                         value="" maxlength="20" required>
                 </div>
             </div>
@@ -203,7 +205,10 @@
 
 <script>
 // just for the demos, avoids form submit
-
+$("#password").hide();
+$("#cambiar-password").click(function(){
+  $("#password").toggle();
+})
 if($('#select-cargo').val()=='agente'){
   $('#section-horario').show();
 }

@@ -2,6 +2,6 @@
 
 @section('content')
     <div class="container-fluid">
-        <h1 class="text-black-50">Hola {{ auth()->user()->name }}!</h1>
+        <h1 class="text-black-50">Hola {{ auth()->user()->nombre }}!</h1>
     </div>
 @endsection

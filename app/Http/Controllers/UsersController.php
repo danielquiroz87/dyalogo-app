@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Usuari;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 
 
 class UsersController extends Controller
@@ -95,7 +96,7 @@ class UsersController extends Controller
                 'email'=>'required|email|max:255',
                 'cargo'=>'required|max:20',
                 'identificacion'=>'required|max:20',
-                'password'=>'required|max:20',
+                'password'=>'nullable|max:20',
                 'file'=>'nullable|max:40000|mimes:jpg,jpeg,png'
             ]);
         }
@@ -148,11 +149,15 @@ class UsersController extends Controller
           }
           
             $user->nombre=$request->get('nombre');
-            $user->correo=$request->get('email');
-            $user->password=$request->get('password');
+            $user->email=$request->get('email');
             $user->cargo=$request->get('cargo');
             $user->identificacion=$request->get('identificacion');
 
+            //Si el password es diferente de vacio lo cambiamos
+            if($request->get('password')!=""){
+                $user->password=Hash::make($request->get('password'));
+            
+            }
             //cargo es agente guardar los horarios
             if($request->input('cargo')=='agente'){
 

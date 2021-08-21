@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use Illuminate\Http\Request;
+use App\Models\Usuari;
 class LoginController extends Controller
 {
     /*
@@ -36,5 +37,38 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+
+    public function authenticate(Request $request)
+    {
+        $validator = \Validator::make(request()->all(), [
+        'email' => 'required',
+        'password' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            //mostrar errores, o en json o lo que necesites
+            return redirect()->back()->withErrors($validator->errors());
+
+        }
+      
+        $userData = Usuari::where('USUARI_Correo___b',$request->get('email'))->first();
+                   // dd($userData);
+
+        if ($userData && \Hash::check($request->get('password'), $userData->password))
+        {
+            
+            auth()->loginUsingId($userData->id);
+            //log que necesites
+            return redirect()->route('home');
+
+        }else{
+
+            \Session::flash('flash_message_error','Usuario o contraseña invalida!.');
+
+            return redirect()->back();
+
+        }
     }
 }

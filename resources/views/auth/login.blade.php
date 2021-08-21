@@ -23,11 +23,23 @@
     <!-- /.login-logo -->
 
     <!-- /.login-box-body -->
+
+                @if(Session::has('flash_message_error'))
+    <div class="alert alert-danger">
+      <span class="glyphicon glyphicon-ok"></span>
+      <em> {!! session('flash_message_error') !!}</em>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+    </div>
+@endif
     <div class="card">
         <div class="card-body login-card-body">
-            <p class="login-box-msg">Sign in to start your session</p>
+            <p class="login-box-msg">Iniciar Sesión</p>
 
-            <form method="post" action="{{ url('/login') }}">
+
+
+            <form method="post" action="{{ route('autenticar') }}">
                 @csrf
 
                 <div class="input-group mb-3">
@@ -61,22 +73,17 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-8">
-                        <div class="icheck-primary">
-                            <input type="checkbox" id="remember">
-                            <label for="remember">Remember Me</label>
-                        </div>
-                    </div>
+               
 
                     <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                        <button type="submit" class="btn btn-primary btn-block">Enviar</button>
                     </div>
 
                 </div>
             </form>
 
             <p class="mb-1">
-                <a href="{{ route('password.request') }}">I forgot my password</a>
+                <a href="{{ route('password.request') }}">Recuperar Contraseña</a>
             </p>
            
         </div>

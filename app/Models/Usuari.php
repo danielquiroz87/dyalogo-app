@@ -2,10 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
-class Usuari extends Model
+
+class Usuari extends Authenticatable
 {
     use HasFactory;
 
@@ -19,7 +24,7 @@ class Usuari extends Model
     	return $this->attributes['USUARI_Nombre____b'];
     }
     
-    public function getCorreoAttribute(){
+    public function getEmailAttribute(){
     	
     	return $this->attributes['USUARI_Correo___b'];
     }
@@ -129,7 +134,7 @@ class Usuari extends Model
          $this->attributes['USUARI_Nombre____b']=$value;
     }
     
-    public function setCorreoAttribute($value){
+    public function setEmailAttribute($value){
         
          $this->attributes['USUARI_Correo___b']=$value;
     }

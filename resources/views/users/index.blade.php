@@ -73,7 +73,7 @@
                     <tr>
                       <td>{{$user->nombre}}</td>
                       <td>{{$user->identificacion}}</td>
-                      <td>{{$user->correo}}</td>
+                      <td>{{$user->email}}</td>
                       <td>{{$user->cargo}}</td>
                       <td>
                       	<a href="{{route('user.edit', $user->id)}}" title="Editar"><i class="fa fa-fw fa-edit"></i></a>
