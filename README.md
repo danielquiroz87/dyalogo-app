@@ -74,6 +74,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 4) Correr el proyecto con php artisan serve
 
 5) Revisar la configuración de la base de datos en el archivo .env conectar con la base de datos 
+~~~
 
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
@@ -81,6 +82,7 @@ DB_PORT=3306
 DB_DATABASE=dyalogo
 DB_USERNAME=xxxxx
 DB_PASSWORD=xxxxx
+~~~
 
 6) Insertar los archivos de prueba corriendo el sql en la ruta doc/usuarios_ejemplo.sql
 
